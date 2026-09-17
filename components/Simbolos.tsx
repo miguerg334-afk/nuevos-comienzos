@@ -112,7 +112,7 @@ export default function Simbolos() {
   ];
 
   return (
-    <section className="relative w-full flex items-center justify-center py-14 sm:py-16 md:py-24 lg:py-32 bg-[#fdfcfa] overflow-hidden">
+    <section id="simbolos" className="relative w-full flex items-center justify-center py-14 sm:py-16 md:py-24 lg:py-32 bg-[#fdfcfa] overflow-hidden scroll-mt-28">
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{

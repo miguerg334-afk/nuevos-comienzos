@@ -3,6 +3,14 @@
 import { useState } from "react";
 import LoginModal from "./LoginModal";
 
+const navigationItems = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Enfoque", href: "#enfoque-educativo" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Oferta Educativa", href: "#oferta-educativa" },
+  { label: "Símbolos", href: "#simbolos" },
+];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -58,7 +66,7 @@ const Header = () => {
         <nav
           className={`
           absolute md:static top-[80px] left-0 w-full md:w-auto 
-          flex flex-col md:flex-row items-center gap-5 md:gap-[34px] 
+          flex flex-col md:flex-row items-center gap-5 md:gap-5
           bg-[#06141b]/95 md:bg-transparent backdrop-blur-[22px] md:backdrop-blur-none
           border border-white/12 md:border-none rounded-[18px] md:rounded-none
           py-5 md:py-0
@@ -70,19 +78,17 @@ const Header = () => {
           }
         `}
         >
-          {["Inicio", "Nosotros", "Oferta Educativa", "Símbolos"].map(
-            (item) => (
+          {navigationItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().split(" ")[0]}`}
+                key={item.href}
+                href={item.href}
                 onClick={closeMenu}
                 className="relative text-white/68 text-[12px] tracking-[0.4px] no-underline transition-colors duration-250 hover:text-white group"
               >
-                {item}
+                {item.label}
                 <span className="absolute left-0 -bottom-[7px] w-0 h-px bg-[#e5ad20] transition-all duration-250 group-hover:w-full"></span>
               </a>
-            ),
-          )}
+            ))}
 
           {/* Opción de Ingresar en Menú Móvil */}
           <button

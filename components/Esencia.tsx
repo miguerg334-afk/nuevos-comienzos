@@ -1,7 +1,8 @@
 export default function Esencia() {
   return (
     <section
-      className="relative w-full py-24 md:py-32 flex items-center justify-center overflow-hidden bg-cover bg-center bg-fixed"
+      id="nosotros"
+      className="relative w-full py-24 md:py-32 flex items-center justify-center overflow-hidden bg-cover bg-center bg-fixed scroll-mt-28"
       style={{ backgroundImage: "url('/img/Jesus.webp')" }}
     >
       {/* Overlay oscuro para garantizar la lectura del texto */}

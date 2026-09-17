@@ -1,5 +1,6 @@
 
 import Hero from "@/components/Hero";
+import EnfoqueEducativo from "@/components/EnfoqueEducativo";
 import Esencia from "@/components/Esencia";
 import OfertaEducativa from "@/components/OfertaEducativa";
 import Simbolos from "@/components/Simbolos";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
       <Hero />
+      <EnfoqueEducativo />
       <Esencia />
       <OfertaEducativa />
       <Simbolos />

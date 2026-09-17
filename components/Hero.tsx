@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       <video
         autoPlay
         loop
