@@ -9,9 +9,9 @@ const navigationItems = [
   { label: "Inicio", href: "/" },
   { label: "Enfoque", href: "/#enfoque-educativo" },
   { label: "Nosotros", href: "/#nosotros" },
+  { label: "Símbolos", href: "/#simbolos" },
   { label: "Oferta", href: "/#oferta-educativa" },
   { label: "Admisiones", href: "/#costos" },
-  { label: "Símbolos", href: "/#simbolos" },
   { label: "Donativos", href: "/donativos" },
   { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
 ];
