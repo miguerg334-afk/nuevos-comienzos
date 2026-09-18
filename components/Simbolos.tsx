@@ -151,7 +151,7 @@ export default function Simbolos() {
             </span>
           </h2>
           <p className="text-[#0c1a24]/60 font-medium text-sm sm:text-base md:text-lg">
-            Cuatro figuras, una misma historia de fe y formación.
+            El escudo y la bandera cuentan nuestra historia de fe y formación.
           </p>
         </div>
 
@@ -192,6 +192,47 @@ export default function Simbolos() {
                 acento={index === 0 ? "#e0295f" : "#e5820a"}
               />
             ))}
+          </div>
+        </div>
+
+        <div className="mt-16 w-full max-w-5xl border-t border-[#0c1a24]/10 pt-14 text-center md:mt-24 md:pt-20">
+          <span className="inline-block text-[#e5820a] text-[11px] sm:text-xs font-bold tracking-[3px] uppercase mb-3">
+            Nuestros colores
+          </span>
+          <h3 className="font-black italic text-[#0c1a24] text-3xl sm:text-4xl md:text-5xl tracking-tight">
+            La bandera del colegio
+          </h3>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#0c1a24]/65 sm:text-base">
+            Cada color expresa los valores que nos acompañan al aprender, crecer y construir un nuevo comienzo.
+          </p>
+
+          <div className="relative mx-auto mt-8 w-full max-w-[360px]">
+            <Image
+              src="/img/bandera-sin-fondo.png"
+              alt="Bandera de Nuevos Comienzos College con azul petróleo, blanco y una franja amarillo dorado"
+              width={1443}
+              height={1090}
+              sizes="(max-width: 640px) 100vw, 360px"
+              className="h-auto w-full"
+            />
+          </div>
+
+          <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
+            <div className="rounded-2xl border border-[#0c1a24]/10 bg-white/80 p-5 sm:p-6">
+              <span className="mb-4 block h-2 w-10 rounded-full bg-[#12394c]" aria-hidden="true" />
+              <h4 className="font-bold text-[#0c1a24]">Azul petróleo</h4>
+              <p className="mt-2 text-sm leading-6 text-[#0c1a24]/65">Confianza, formación y estabilidad.</p>
+            </div>
+            <div className="rounded-2xl border border-[#0c1a24]/10 bg-white/80 p-5 sm:p-6">
+              <span className="mb-4 block h-2 w-10 rounded-full border border-[#0c1a24]/20 bg-white" aria-hidden="true" />
+              <h4 className="font-bold text-[#0c1a24]">Blanco</h4>
+              <p className="mt-2 text-sm leading-6 text-[#0c1a24]/65">Integridad, paz y transparencia.</p>
+            </div>
+            <div className="rounded-2xl border border-[#0c1a24]/10 bg-white/80 p-5 sm:p-6">
+              <span className="mb-4 block h-2 w-10 rounded-full bg-[#e5ad20]" aria-hidden="true" />
+              <h4 className="font-bold text-[#0c1a24]">Amarillo dorado</h4>
+              <p className="mt-2 text-sm leading-6 text-[#0c1a24]/65">Luz, esperanza y excelencia.</p>
+            </div>
           </div>
         </div>
       </div>

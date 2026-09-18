@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
@@ -24,26 +25,31 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="/" className="hover:text-[#f59e0b] transition-colors">
+                <Link href="/" className="hover:text-[#f59e0b] transition-colors">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#nosotros" className="hover:text-[#f59e0b] transition-colors">
+                <Link href="/#nosotros" className="hover:text-[#f59e0b] transition-colors">
                   Nosotros
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#costos" className="hover:text-[#f59e0b] transition-colors">
+                <Link href="/#costos" className="hover:text-[#f59e0b] transition-colors">
                   Admisiones
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/trabaja-con-nosotros" className="hover:text-[#f59e0b] transition-colors">
-                  Trabaja con nosotros
-                </a>
+                <Link href="/#uniformes" className="hover:text-[#f59e0b] transition-colors">
+                  Uniformes
+                </Link>
               </li>
-              <li><a href="/donativos" className="hover:text-[#f59e0b] transition-colors">DONATIVOS</a></li>
+              <li>
+                <Link href="/trabaja-con-nosotros" className="hover:text-[#f59e0b] transition-colors">
+                  Trabaja con nosotros
+                </Link>
+              </li>
+              <li><Link href="/donativos" className="hover:text-[#f59e0b] transition-colors">DONATIVOS</Link></li>
             </ul>
           </div>
 

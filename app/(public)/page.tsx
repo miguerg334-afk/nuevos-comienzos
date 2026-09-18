@@ -7,6 +7,7 @@ import Simbolos from "@/components/Simbolos";
 import InspirationBanner from "@/components/InspirationBanner";
 import Footer from "@/components/Footer";
 import Costos from "@/components/Costos";
+import Uniformes from "@/components/Uniformes";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <EnfoqueEducativo />
       <Esencia />
       <OfertaEducativa />
+      <Uniformes />
       <Simbolos />
       <Costos />
       <InspirationBanner />
