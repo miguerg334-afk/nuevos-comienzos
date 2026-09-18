@@ -2,15 +2,16 @@
 
 import React from "react";
 import ScrollVelocity from "./ScrollVelocity";
+import PreMatricula from "./PreMatricula";
 
 export const InspirationBanner: React.FC = () => {
   const bannerTexts: React.ReactNode[] = [
     <span key="1" className="inline-flex items-center gap-3">
       <span className="font-serif font-normal text-[#e2e8f0]">
-        Sé parte de una comunidad que
+        Tu futuro no está lejos,
       </span>
       <span className="font-serif italic text-[#f59e0b] font-normal">
-        inspira.
+        está aquí
       </span>
       <span className="ml-6 text-2xl text-[#f59e0b]/50">•</span>
     </span>,
@@ -34,9 +35,7 @@ export const InspirationBanner: React.FC = () => {
 
         {/* Botón CTA dorado de alto contraste */}
         <div className="flex-shrink-0 z-10 w-full sm:w-auto text-center">
-          <button className="w-full sm:w-auto bg-[#f59e0b] hover:bg-[#d97706] text-[#0f172a] font-sans text-sm md:text-base font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-amber-500/20 active:scale-95 cursor-pointer">
-            Solicitar Prematrícula
-          </button>
+          <PreMatricula />
         </div>
       </div>
     </section>
