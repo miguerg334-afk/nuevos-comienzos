@@ -15,9 +15,9 @@ export default function Home() {
       <Hero />
       <EnfoqueEducativo />
       <Esencia />
+      <Simbolos />
       <OfertaEducativa />
       <Uniformes />
-      <Simbolos />
       <Costos />
       <InspirationBanner />
       <Footer />
