@@ -7,7 +7,7 @@ export type Student = { nombre: string; edad: string; grado: string; procedencia
 export type Prematricula = { acudiente: Contact; estudiantes: Student[] };
 export type Donativo = Contact & { modalidad: string; mensaje: string };
 export type Talento = Contact & { especialidad: string };
-export const modalidades = ["Equipa un sueño", "Invierte en una vida", "Haz crecer una oportunidad", "Construyamos el futuro"];
+export const modalidades = ["Equipa un sueño", "Invierte en una vida", "Haz crecer una oportunidad"];
 export const especialidades = ["Matemáticas", "Ciencias Naturales", "Lengua Castellana", "Inglés", "Ciencias Sociales", "Educación Física", "Tecnología e Informática", "Orientación escolar"];
 
 export function record(value: unknown): Record<string, unknown> {

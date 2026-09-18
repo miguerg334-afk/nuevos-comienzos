@@ -2,9 +2,9 @@ import { ArrowUpRight, BadgePercent, BookOpen, CalendarDays, Check, GraduationCa
 import PreMatricula from "./PreMatricula";
 
 const instituciones = [
-  "Institución Educativa Liceo Genios Huilenses",
   "Liceo Cristiano Emanuel",
   "Colegio Gimnasio Nueva Colombia",
+  "Institución Educativa Liceo Genios Huilenses",
 ];
 
 export default function Costos() {
