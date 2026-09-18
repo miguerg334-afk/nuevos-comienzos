@@ -1,3 +1,5 @@
+import PreMatricula from "./PreMatricula";
+
 export default function Hero() {
   return (
     <section id="inicio" className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -24,7 +26,7 @@ export default function Hero() {
 
         <h1 className="font-serif text-[48px] md:text-[64px] leading-[1.1] mb-6 drop-shadow-lg">
           <span className="block text-white font-medium">
-            Colegio Cristiano de Educación Secundaria
+            Colegio de Educación Secundaria
           </span>
           <span className="block text-[#e5ad20] italic font-medium">
             en Campoalegre
@@ -38,9 +40,7 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#e5ad20] text-[#101820] text-[14px] font-bold tracking-[0.5px] transition-transform duration-300 hover:-translate-y-1 hover:bg-[#f5c344]">
-            Inicia tu prematrícula
-          </button>
+          <PreMatricula />
           <a
             href="#nosotros"
             className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-transparent border border-white/20 text-white text-[14px] font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/40 text-center no-underline"

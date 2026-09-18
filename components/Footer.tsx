@@ -24,25 +24,26 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#" className="hover:text-[#f59e0b] transition-colors">
+                <a href="/" className="hover:text-[#f59e0b] transition-colors">
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#f59e0b] transition-colors">
+                <a href="/#nosotros" className="hover:text-[#f59e0b] transition-colors">
                   Nosotros
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#f59e0b] transition-colors">
+                <a href="/#costos" className="hover:text-[#f59e0b] transition-colors">
                   Admisiones
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#f59e0b] transition-colors">
-                  Contacto
+                <a href="/trabaja-con-nosotros" className="hover:text-[#f59e0b] transition-colors">
+                  Trabaja con nosotros
                 </a>
               </li>
+              <li><a href="/donativos" className="hover:text-[#f59e0b] transition-colors">DONATIVOS</a></li>
             </ul>
           </div>
 

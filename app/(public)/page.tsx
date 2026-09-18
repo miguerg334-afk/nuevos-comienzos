@@ -6,6 +6,7 @@ import OfertaEducativa from "@/components/OfertaEducativa";
 import Simbolos from "@/components/Simbolos";
 import InspirationBanner from "@/components/InspirationBanner";
 import Footer from "@/components/Footer";
+import Costos from "@/components/Costos";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Esencia />
       <OfertaEducativa />
       <Simbolos />
+      <Costos />
       <InspirationBanner />
       <Footer />
 

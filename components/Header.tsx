@@ -1,14 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import LoginModal from "./LoginModal";
+import PreMatricula from "./PreMatricula";
 
 const navigationItems = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Enfoque", href: "#enfoque-educativo" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Oferta Educativa", href: "#oferta-educativa" },
-  { label: "Símbolos", href: "#simbolos" },
+  { label: "Inicio", href: "/" },
+  { label: "Enfoque", href: "/#enfoque-educativo" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Oferta", href: "/#oferta-educativa" },
+  { label: "Admisiones", href: "/#costos" },
+  { label: "Símbolos", href: "/#simbolos" },
+  { label: "Donativos", href: "/donativos" },
+  { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
 ];
 
 const Header = () => {
@@ -26,9 +31,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-[22px] left-1/2 -translate-x-1/2 w-[min(calc(100%-32px),1180px)] h-[68px] flex items-center justify-between px-5 z-[100] border border-white/12 bg-[#06141b]/65 backdrop-blur-[22px] rounded-[18px] shadow-[0_15px_50px_rgba(0,0,0,0.3)]">
-        <a
-          href="#inicio"
+      <header className="fixed top-[22px] left-1/2 -translate-x-1/2 w-[min(calc(100%-24px),1440px)] h-[76px] flex items-center justify-between gap-5 px-5 xl:px-7 z-[100] border border-white/15 bg-[#06141b]/90 backdrop-blur-[22px] rounded-[18px] shadow-[0_15px_50px_rgba(0,0,0,0.3)]">
+        <Link
+          href="/"
           className="flex items-center gap-3 no-underline text-white"
         >
           {!imageError ? (
@@ -51,11 +56,11 @@ const Header = () => {
               COLLEGE
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Botón Hamburguesa Móvil */}
         <button
-          className="block md:hidden bg-transparent border-none text-white text-[24px] cursor-pointer"
+          className="block xl:hidden bg-transparent border-none text-white text-[24px] cursor-pointer"
           onClick={toggleMenu}
           aria-label="Abrir menú"
         >
@@ -65,35 +70,36 @@ const Header = () => {
         {/* Navegación Desktop y Mobile */}
         <nav
           className={`
-          absolute md:static top-[80px] left-0 w-full md:w-auto 
-          flex flex-col md:flex-row items-center gap-5 md:gap-5
-          bg-[#06141b]/95 md:bg-transparent backdrop-blur-[22px] md:backdrop-blur-none
-          border border-white/12 md:border-none rounded-[18px] md:rounded-none
-          py-5 md:py-0
+          absolute xl:static top-[88px] left-0 w-full xl:w-auto
+          flex flex-col xl:flex-row items-center gap-5 xl:gap-1
+          bg-[#06141b]/95 xl:bg-transparent backdrop-blur-[22px] xl:backdrop-blur-none
+          border border-white/15 xl:border-none rounded-[18px] xl:rounded-none
+          py-5 xl:py-0
           transition-all duration-300 ease-in-out
           ${
             isMenuOpen
               ? "opacity-100 pointer-events-auto translate-y-0"
-              : "opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto -translate-y-2.5 md:translate-y-0"
+              : "opacity-0 xl:opacity-100 pointer-events-none xl:pointer-events-auto -translate-y-2.5 xl:translate-y-0"
           }
         `}
         >
           {navigationItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="relative text-white/68 text-[12px] tracking-[0.4px] no-underline transition-colors duration-250 hover:text-white group"
+                className="relative whitespace-nowrap rounded-lg px-2.5 py-2 text-white/75 text-[12px] font-medium tracking-[0.2px] no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white group"
               >
                 {item.label}
-                <span className="absolute left-0 -bottom-[7px] w-0 h-px bg-[#e5ad20] transition-all duration-250 group-hover:w-full"></span>
-              </a>
+                <span className="absolute left-2.5 right-2.5 bottom-1 h-px scale-x-0 bg-[#e5ad20] transition-all duration-250 group-hover:scale-x-100"></span>
+              </Link>
             ))}
 
+          <div className="xl:hidden"><PreMatricula compact /></div>
           {/* Opción de Ingresar en Menú Móvil */}
           <button
             onClick={openLogin}
-            className="flex md:hidden items-center gap-2 text-[#e5ad20] text-[12px] font-semibold tracking-[0.4px] bg-transparent border-none cursor-pointer"
+            className="flex xl:hidden items-center gap-2 text-[#e5ad20] text-[12px] font-semibold tracking-[0.4px] bg-transparent border-none cursor-pointer"
           >
             <span>Portal Ingreso</span>
             <span>→</span>
@@ -101,7 +107,7 @@ const Header = () => {
         </nav>
 
         {/* Botones de Acción Desktop */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           {/* Botón de Ingreso al Sistema */}
           <button
             onClick={() => setIsLoginOpen(true)}
@@ -123,11 +129,7 @@ const Header = () => {
             Ingresar
           </button>
 
-          {/* Botón Prematrícula */}
-          <button className="flex items-center gap-[9px] px-[17px] py-[11px] rounded-[10px] bg-[#e5ad20] text-[#101820] text-[11px] font-bold tracking-[0.4px] border-none cursor-pointer transition-all duration-250 hover:-translate-y-[2px] hover:bg-[#f5c344]">
-            Prematrículate
-            <span>→</span>
-          </button>
+          <PreMatricula compact />
         </div>
       </header>
 
