@@ -1,5 +1,7 @@
 "use client";
 
+import { checkFormResponse } from "@/lib/form-response";
+
 import { useRef, useState } from "react";
 import { ArrowUpRight, HeartHandshake, LoaderCircle, X } from "lucide-react";
 
@@ -16,9 +18,9 @@ export default function DonacionForm({ modalidad }: { modalidad: string }) {
     setLoading(true); setStatus(""); setSuccess(false);
     try {
       const response = await fetch("/api/donativos", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ modalidad, nombre: form.get("nombre"), email: form.get("email"), telefono: form.get("telefono"), mensaje: form.get("mensaje") }) });
-      if (!response.ok) throw new Error();
+      await checkFormResponse(response);
       setStatus("Recibimos tu interés. Te contactaremos para coordinar el aporte."); setSuccess(true); formElement.reset();
-    } catch { setStatus("No pudimos registrar tu interés. Inténtalo más tarde."); }
+    } catch (error) { setStatus(error instanceof Error ? error.message : "No pudimos registrar tu interés. Inténtalo más tarde."); }
     finally { setLoading(false); }
   }
 

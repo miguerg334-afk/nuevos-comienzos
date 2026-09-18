@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import { checkFormResponse } from "@/lib/form-response";
 
 type Student = { nombre: string; edad: string; grado: string; procedencia: string };
 const emptyStudent = (): Student => ({ nombre: "", edad: "", grado: "", procedencia: "" });
@@ -15,14 +16,15 @@ export default function PreMatricula({ compact = false }: { compact?: boolean })
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true); setStatus("");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     try {
       const response = await fetch("/api/prematricula", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ acudiente: { nombre: form.get("nombreAcudiente"), telefono: form.get("telefono"), email: form.get("email") }, estudiantes: students }) });
-      if (!response.ok) throw new Error();
+      await checkFormResponse(response);
       setStatus("Solicitud recibida. Nos pondremos en contacto contigo.");
       setStudents([emptyStudent()]);
-      event.currentTarget.reset();
-    } catch { setStatus("No fue posible enviar la solicitud. Inténtalo más tarde."); }
+      formElement.reset();
+    } catch (error) { setStatus(error instanceof Error ? error.message : "No fue posible enviar la solicitud. Inténtalo más tarde."); }
     finally { setLoading(false); }
   }
   return <>
@@ -33,7 +35,7 @@ export default function PreMatricula({ compact = false }: { compact?: boolean })
         <form onSubmit={submit} className="space-y-5">
           <fieldset className="grid gap-3 sm:grid-cols-2"><legend className="mb-3 font-semibold">Datos del acudiente</legend><label>Nombre completo<input required name="nombreAcudiente" className={inputClass}/></label><label>Teléfono<input required name="telefono" type="tel" className={inputClass}/></label><label className="sm:col-span-2">Correo electrónico<input required name="email" type="email" className={inputClass}/></label></fieldset>
           {students.map((student, index) => <fieldset key={index} className="grid gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-2"><legend className="px-1 font-semibold">Estudiante {index + 1}</legend><label>Nombre completo<input required value={student.nombre} onChange={e => setStudents(students.map((s,i) => i === index ? {...s,nombre:e.target.value}:s))} className={inputClass}/></label><label>Edad<input required min="5" max="25" type="number" value={student.edad} onChange={e => setStudents(students.map((s,i) => i === index ? {...s,edad:e.target.value}:s))} className={inputClass}/></label><label>Grado al que aspira<select required value={student.grado} onChange={e => setStudents(students.map((s,i) => i === index ? {...s,grado:e.target.value}:s))} className={inputClass}><option value="">Selecciona un grado</option>{[6,7,8,9,10,11].map(g => <option key={g} value={String(g)}>{g}°</option>)}</select></label><label>Institución de procedencia<input required value={student.procedencia} onChange={e => setStudents(students.map((s,i) => i === index ? {...s,procedencia:e.target.value}:s))} className={inputClass}/></label>{students.length > 1 && <button type="button" onClick={() => setStudents(students.filter((_,i) => i !== index))} className="text-left text-sm text-red-700">Quitar estudiante</button>}</fieldset>)}
-          <button type="button" onClick={() => setStudents([...students,emptyStudent()])} className="rounded-lg border border-slate-400 px-4 py-2 font-semibold">+ Agregar otro estudiante</button>
+          <button disabled={students.length >= 10 || loading} type="button" onClick={() => setStudents([...students,emptyStudent()])} className="rounded-lg border border-slate-400 px-4 py-2 font-semibold">+ Agregar otro estudiante</button>
           <div className="flex flex-col gap-2"><button disabled={loading} className="rounded-lg bg-[#06141b] px-5 py-3 font-bold text-white disabled:opacity-50">{loading ? "Enviando..." : "Enviar solicitud"}</button>{status && <p role="status" className="text-sm">{status}</p>}</div>
         </form>
       </div>

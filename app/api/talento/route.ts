@@ -1,13 +1,26 @@
-import { submissionClient, unavailable } from "@/lib/public-submissions";
-const allowed = ["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+import { deliverSubmission } from "@/lib/public-submissions";
+import { talentoEmail } from "@/lib/email-templates";
+import { attachment } from "@/lib/form-email";
+import { documentFile, formErrorResponse, readBody, talento } from "@/lib/form-validation";
+
+export const runtime = "nodejs";
 export async function POST(request: Request) {
-  const db = submissionClient(); if (!db) return unavailable();
-  try { const data=await request.formData();const cv=data.get("cv"),carta=data.get("carta");
-    if (!data.get("nombre") || !data.get("email") || !data.get("telefono") || !data.get("especialidad") || !(cv instanceof File) || !(carta instanceof File) || [cv,carta].some(f=>!f.size || f.size>5_000_000 || !allowed.includes(f.type))) return Response.json({error:"Datos o archivos inválidos"},{status:400});
-    const id=crypto.randomUUID();
-    const upload=async(file:File,name:string)=>{const path=`${id}/${name}`;const {error}=await db.storage.from("postulaciones").upload(path,file,{contentType:file.type,upsert:false});if(error)throw error;return path};
-    const cvPath=await upload(cv,"cv"),cartaPath=await upload(carta,"carta");
-    const {error}=await db.from("postulaciones").insert({nombre:data.get("nombre"),email:data.get("email"),telefono:data.get("telefono"),especialidad:data.get("especialidad"),cv_path:cvPath,carta_path:cartaPath});if(error)throw error;
-    return Response.json({ok:true});
-  } catch {return Response.json({error:"No se pudo guardar la postulación"},{status:500})}
+  try {
+    const form = await (await readBody(request, 4_300_000)).formData();
+    const data = talento(form);
+    const [cv, carta] = await Promise.all([
+      documentFile(form.get("cv"), "Hoja de vida"),
+      documentFile(form.get("carta"), "Carta pastoral"),
+    ]);
+    const attachments = await Promise.all([attachment(cv, "Hoja-de-vida"), attachment(carta, "Carta-pastoral")]);
+    return await deliverSubmission(talentoEmail(data, [attachments[0].filename, attachments[1].filename]), async (db, id) => {
+      const paths = attachments.map(a => `${id}/${a.filename}`);
+      for (const [index, file] of [cv,carta].entries()) {
+        const { error } = await db.storage.from("postulaciones").upload(paths[index], file, { contentType: file.type || "application/octet-stream", upsert: true });
+        if (error) throw error;
+      }
+      const { error } = await db.from("postulaciones").upsert({ id, ...data, cv_path: paths[0], carta_path: paths[1] }, { onConflict: "id", ignoreDuplicates: true });
+      if (error) throw error;
+    }, attachments);
+  } catch (error) { return formErrorResponse(error); }
 }

@@ -1,8 +1,14 @@
-import { submissionClient, unavailable } from "@/lib/public-submissions";
-const modalidades = ["Equipa un sueño","Invierte en una vida","Haz crecer una oportunidad","Construyamos el futuro"];
+import { deliverSubmission } from "@/lib/public-submissions";
+import { donativoEmail } from "@/lib/email-templates";
+import { donativo, formErrorResponse, readBody } from "@/lib/form-validation";
+
+export const runtime = "nodejs";
 export async function POST(request: Request) {
-  const db = submissionClient(); if (!db) return unavailable();
-  try { const body = await request.json(); if (!modalidades.includes(body.modalidad) || !body.nombre || !body.email || !body.telefono) return Response.json({error:"Datos incompletos"},{status:400});
-    const {error}=await db.from("intereses_donativos").insert({modalidad:body.modalidad,nombre:body.nombre,email:body.email,telefono:body.telefono,mensaje:body.mensaje||""});if(error)throw error;return Response.json({ok:true});
-  } catch {return Response.json({error:"No se pudo guardar el interés"},{status:500})}
+  try {
+    const data = donativo(await (await readBody(request, 15_000)).json());
+    return await deliverSubmission(donativoEmail(data), async (db, id) => {
+      const { error } = await db.from("intereses_donativos").upsert({ id, ...data }, { onConflict: "id", ignoreDuplicates: true });
+      if (error) throw error;
+    });
+  } catch (error) { return formErrorResponse(error); }
 }
