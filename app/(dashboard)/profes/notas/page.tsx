@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export interface StudentGrade {
   id: string;
@@ -46,7 +46,7 @@ export default function GradebookPage() {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const { data, error } = await supabase.from("courses").select("*");
+      const { data, error } = await getSupabase().from("courses").select("*");
       if (error) {
         console.error("Error al obtener cursos:", error);
         return;
@@ -63,7 +63,7 @@ export default function GradebookPage() {
   const fetchStudentsAndGrades = useCallback(async (courseId: string) => {
     setIsLoading(true);
     try {
-      const { data, error } = await supabase
+      const { data, error } = await getSupabase()
         .from("students")
         .select(
           `
@@ -153,7 +153,7 @@ export default function GradebookPage() {
 
     try {
       for (const student of students) {
-        const { error: studentErr } = await supabase
+        const { error: studentErr } = await getSupabase()
           .from("students")
           .update({
             name: student.name,
@@ -173,7 +173,7 @@ export default function GradebookPage() {
           updated_at: new Date().toISOString(),
         };
 
-        const { error: gradeErr } = await supabase
+        const { error: gradeErr } = await getSupabase()
           .from("grades")
           .upsert(gradePayload, { onConflict: "student_id" });
 
@@ -198,7 +198,7 @@ export default function GradebookPage() {
 
     setIsAdding(true);
     try {
-      const { data: studentData, error: studentErr } = await supabase
+      const { data: studentData, error: studentErr } = await getSupabase()
         .from("students")
         .insert([
           {
@@ -213,7 +213,7 @@ export default function GradebookPage() {
       if (studentErr) throw studentErr;
 
       if (studentData) {
-        await supabase.from("grades").insert([
+        await getSupabase().from("grades").insert([
           {
             student_id: studentData.id,
             n1: 0,
@@ -255,7 +255,7 @@ export default function GradebookPage() {
 
     setIsDeleting(true);
     try {
-      const { error } = await supabase
+      const { error } = await getSupabase()
         .from("students")
         .delete()
         .eq("id", studentToDelete.id);

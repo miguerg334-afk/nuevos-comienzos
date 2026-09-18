@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -54,7 +54,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     // 2. AUTENTICACIÓN CON SUPABASE (FALLBACK REAL)
     try {
       const { data: authData, error: authError } =
-        await supabase.auth.signInWithPassword({
+        await getSupabase().auth.signInWithPassword({
           email: cleanEmail,
           password: cleanPassword,
         });
@@ -62,7 +62,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       if (authError) throw authError;
 
       if (authData.user) {
-        const { data: profile } = await supabase
+        const { data: profile } = await getSupabase()
           .from("profiles")
           .select("role")
           .eq("id", authData.user.id)

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import {
   Sun,
   Moon,
@@ -70,7 +70,7 @@ function AdminContent() {
 
   // Cargar Cursos
   const fetchCourses = useCallback(async () => {
-    const { data } = await supabase.from("courses").select("*").order("name");
+    const { data } = await getSupabase().from("courses").select("*").order("name");
     if (data) {
       setCourses(data);
       if (data.length > 0 && !selectedClass) setSelectedClass(data[0].id);
@@ -84,7 +84,7 @@ function AdminContent() {
   // Cargar Estudiantes
   const fetchStudents = useCallback(async (courseId: string) => {
     setIsLoadingGrades(true);
-    const { data } = await supabase
+    const { data } = await getSupabase()
       .from("students")
       .select(`id, code, name, grades ( id, n1, n2, n3, n4, observation )`)
       .eq("course_id", courseId);
@@ -130,7 +130,7 @@ function AdminContent() {
     e.preventDefault();
     if (!newCourseName.trim()) return;
 
-    const { data, error } = await supabase
+    const { data, error } = await getSupabase()
       .from("courses")
       .insert([{ name: newCourseName.trim() }])
       .select();
@@ -148,7 +148,7 @@ function AdminContent() {
     e.preventDefault();
     if (!newStudentName.trim() || !selectedClass) return;
 
-    const { data, error } = await supabase
+    const { data, error } = await getSupabase()
       .from("students")
       .insert([
         {
@@ -161,7 +161,7 @@ function AdminContent() {
 
     if (!error && data && data.length > 0) {
       const createdStudent = data[0];
-      await supabase.from("grades").insert([
+      await getSupabase().from("grades").insert([
         {
           student_id: createdStudent.id,
           n1: 0,
@@ -181,8 +181,8 @@ function AdminContent() {
   const handleDeleteStudent = async () => {
     if (!studentToDelete) return;
 
-    await supabase.from("grades").delete().eq("student_id", studentToDelete.id);
-    await supabase.from("students").delete().eq("id", studentToDelete.id);
+    await getSupabase().from("grades").delete().eq("student_id", studentToDelete.id);
+    await getSupabase().from("students").delete().eq("id", studentToDelete.id);
 
     setStudents((prev) => prev.filter((s) => s.id !== studentToDelete.id));
     setStudentToDelete(null);
@@ -193,12 +193,12 @@ function AdminContent() {
     setIsSaving(true);
     try {
       for (const st of students) {
-        await supabase
+        await getSupabase()
           .from("students")
           .update({ name: st.name, code: st.code })
           .eq("id", st.id);
 
-        await supabase.from("grades").upsert(
+        await getSupabase().from("grades").upsert(
           {
             student_id: st.id,
             n1: st.n1 === "" ? 0 : Number(String(st.n1).replace(",", ".")),
