@@ -4,7 +4,7 @@ import React from "react";
 
 export const WhatsAppButton: React.FC = () => {
   // Reemplaza con tu número real (incluyendo el código de país, sin el signo +)
-  const phoneNumber = "573144316062";
+  const phoneNumber = "573203242243";
   const defaultMessage = encodeURIComponent(
     "¡Hola! Me gustaría solicitar información sobre las prematrículas.",
   );

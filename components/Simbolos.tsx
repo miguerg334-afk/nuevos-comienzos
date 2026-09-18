@@ -208,7 +208,7 @@ export default function Simbolos() {
 
           <div className="relative mx-auto mt-8 w-full max-w-[360px]">
             <Image
-              src="/img/bandera-sin-fondo.png"
+              src="/img/bandera.webp"
               alt="Bandera de Nuevos Comienzos College con azul petróleo, blanco y una franja amarillo dorado"
               width={1443}
               height={1090}

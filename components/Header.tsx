@@ -7,10 +7,8 @@ import PreMatricula from "./PreMatricula";
 
 const navigationItems = [
   { label: "Inicio", href: "/" },
-  { label: "Enfoque", href: "/#enfoque-educativo" },
   { label: "Nosotros", href: "/#nosotros" },
   { label: "Símbolos", href: "/#simbolos" },
-  { label: "Oferta", href: "/#oferta-educativa" },
   { label: "Admisiones", href: "/#costos" },
   { label: "Donativos", href: "/donativos" },
   { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
