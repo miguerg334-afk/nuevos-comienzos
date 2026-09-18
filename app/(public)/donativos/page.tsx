@@ -24,7 +24,7 @@ export default function Donativos() {
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-7">{opciones.map(({ Icon, titulo, descripcion, detalle, categoria, color, iconColor }, index) => <article key={titulo} className={`group relative flex flex-col overflow-hidden rounded-[28px] border border-[#06141b]/5 p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-[#06141b]/5 sm:p-10 lg:p-8 ${color}`}><div className="mb-8 flex items-center justify-between"><span className={`grid h-14 w-14 place-items-center rounded-2xl ${iconColor}`}><Icon size={26} strokeWidth={1.5} aria-hidden="true" /></span><span className="font-serif text-5xl text-[#06141b]/15" aria-hidden="true">0{index + 1}</span></div><p className="mb-3 text-xs font-medium tracking-wide text-slate-500">{categoria}</p><h3 className="font-serif text-3xl leading-tight">{titulo}</h3><p className="mt-4 font-medium leading-7">{descripcion}</p><p className="mt-2 max-w-sm text-sm leading-7 text-slate-600">{detalle}</p><div className="mt-auto pt-8"><DonacionForm modalidad={titulo} /></div></article>)}</div>
         <section aria-labelledby="por-que-donar" className="mt-20 md:mt-28">
           <div className="mb-10 max-w-2xl">
-            <p className="mb-4 text-xs font-semibold tracking-wider text-[#9b6c12]">El sentido de tu aporte</p>
+            <p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">El sentido de tu aporte</p>
             <h2 id="por-que-donar" className="font-serif text-4xl leading-tight md:text-5xl">¿Por qué <span className="italic text-[#9b6c12]">donar?</span></h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
