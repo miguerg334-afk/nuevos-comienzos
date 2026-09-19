@@ -44,7 +44,7 @@ export default function EnfoqueEducativo() {
   return (
     <section
       id="enfoque-educativo"
-      className="relative w-full overflow-hidden bg-[#f8f6f0] px-5 py-20 md:py-28 scroll-mt-28"
+      className="relative w-full overflow-hidden bg-[#e8d6a8] px-5 py-20 md:py-28 scroll-mt-28"
       aria-labelledby="enfoque-educativo-titulo"
     >
       {/* ═══════════════ CAPAS DE FONDO ═══════════════ */}
@@ -52,20 +52,20 @@ export default function EnfoqueEducativo() {
       {/* 1. Trama diagonal tipo papel */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.5]"
+        className="pointer-events-none absolute inset-0 opacity-[0.75]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(135deg, rgba(6,20,27,0.022) 0px, rgba(6,20,27,0.022) 1px, transparent 1px, transparent 14px)",
+            "repeating-linear-gradient(135deg, rgba(6,20,27,0.05) 0px, rgba(6,20,27,0.05) 1px, transparent 1px, transparent 14px)",
         }}
       />
 
       {/* 2. Grid arquitectónico tipo blueprint */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.55]"
+        className="pointer-events-none absolute inset-0 opacity-[0.72]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(6,20,27,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(6,20,27,0.045) 1px, transparent 1px)",
+            "linear-gradient(rgba(6,20,27,0.075) 1px, transparent 1px), linear-gradient(90deg, rgba(6,20,27,0.075) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage:
             "radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%)",
@@ -80,7 +80,7 @@ export default function EnfoqueEducativo() {
         className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(229,173,32,0.28) 0%, rgba(229,173,32,0) 70%)",
+            "radial-gradient(circle, rgba(255,202,61,0.58) 0%, rgba(229,173,32,0) 70%)",
         }}
       />
       <div
@@ -88,7 +88,7 @@ export default function EnfoqueEducativo() {
         className="pointer-events-none absolute -right-40 top-1/3 h-[560px] w-[560px] rounded-full blur-[130px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(6,20,27,0.14) 0%, rgba(6,20,27,0) 70%)",
+            "radial-gradient(circle, rgba(6,20,27,0.28) 0%, rgba(6,20,27,0) 70%)",
         }}
       />
       <div
@@ -96,17 +96,17 @@ export default function EnfoqueEducativo() {
         className="pointer-events-none absolute bottom-[-180px] left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full blur-[140px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(166,120,8,0.22) 0%, rgba(166,120,8,0) 70%)",
+            "radial-gradient(circle, rgba(166,120,8,0.45) 0%, rgba(166,120,8,0) 70%)",
         }}
       />
 
       {/* 4. Haz diagonal dorado tipo rayo de luz */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-90"
         style={{
           background:
-            "linear-gradient(115deg, transparent 30%, rgba(229,173,32,0.10) 45%, rgba(229,173,32,0.16) 50%, rgba(229,173,32,0.10) 55%, transparent 70%)",
+            "linear-gradient(115deg, transparent 27%, rgba(255,238,181,0.26) 43%, rgba(229,173,32,0.30) 50%, rgba(255,238,181,0.26) 57%, transparent 73%)",
         }}
       />
 
@@ -146,7 +146,7 @@ export default function EnfoqueEducativo() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 100% 80% at 50% 50%, transparent 55%, rgba(6,20,27,0.06) 100%)",
+            "radial-gradient(ellipse 100% 80% at 50% 50%, transparent 48%, rgba(6,20,27,0.14) 100%)",
         }}
       />
 
@@ -163,6 +163,9 @@ export default function EnfoqueEducativo() {
       >
         NC
       </span>
+
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-[28%] h-[520px] w-[520px] rotate-12 rounded-[120px] border border-[#06141b]/20 bg-[#06141b]/[0.07] shadow-[0_32px_80px_rgba(6,20,27,0.12)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 left-[8%] h-44 w-44 rounded-full border-[22px] border-[#f4c34e]/60" />
 
       {/* ═══════════════ CONTENIDO ═══════════════ */}
 
@@ -195,7 +198,7 @@ export default function EnfoqueEducativo() {
           {pilares.map((pilar) => (
             <article
               key={pilar.numero}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#06141b]/10 bg-white/75 p-7 shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#e5ad20]/60 hover:bg-white hover:shadow-[0_25px_50px_-20px_rgba(6,20,27,0.3)] md:p-8"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-[#fffdf8]/90 p-7 shadow-[0_18px_45px_-28px_rgba(6,20,27,0.42),0_1px_0_0_rgba(255,255,255,0.8)_inset] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#e5ad20]/80 hover:bg-white hover:shadow-[0_30px_55px_-20px_rgba(6,20,27,0.38)] md:p-8"
             >
               {/* Línea dorada superior animada */}
               <span
