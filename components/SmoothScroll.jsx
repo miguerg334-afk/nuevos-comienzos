@@ -10,6 +10,8 @@ export default function SmoothScroll({ children }) {
       duration: 3.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      // Dialogs and panels marked this way retain their native wheel and touch scroll.
+      prevent: (node) => Boolean(node.closest("[data-lenis-prevent]")),
     });
 
     function raf(time) {
