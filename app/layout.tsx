@@ -8,6 +8,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/img/img-donaciones.webp"
+          fetchPriority="high"
+        />
+      </head>
       <body className="bg-[#080c14] text-white min-h-screen">{children}</body>
     </html>
   );
