@@ -24,11 +24,30 @@ const estudiantesHeaders = [
   "Observaciones",
 ];
 
-const institucionesConDescuento = new Set([
-  "liceo cristiano emanuel",
-  "colegio gimnasio nueva colombia",
-  "institución educativa liceo genios huilenses",
-]);
+const institucionesConDescuento = [
+  // Liceo Cristiano Emanuel
+  "Liceo Cristiano Emanuel",
+  "Liceo Cristiano Emmanuel",
+  "Liceo Emanuel",
+  "Liceo Emmanuel",
+  "Colegio Cristiano Emanuel",
+  "Colegio Cristiano Emmanuel",
+  // Colegio Gimnasio Nueva Colombia
+  "Colegio Gimnasio Nueva Colombia",
+  "Gimnasio Nueva Colombia",
+  "Colegio Nueva Colombia",
+  "Gimnasio Nueva Columbia",
+  "Colegio Gimnasio Nueva Columbia",
+  // Institución Educativa Liceo Genios Huilenses
+  "Institución Educativa Liceo Genios Huilenses",
+  "Institucion Educativa Liceo Genios Huilenses",
+  "I.E. Liceo Genios Huilenses",
+  "IE Liceo Genios Huilenses",
+  "Liceo Genios Huilenses",
+  "Genios Huilenses",
+  "Liceo Genios Huilense",
+  "Institución Educativa Genios Huilenses",
+];
 
 // The same request color is applied in both tabs. Consecutive families never share a color.
 const requestIdColors = [
@@ -64,8 +83,16 @@ function sheetsConfiguration(): { spreadsheetId: string; credentials: ServiceAcc
 }
 
 function normalizar(texto: string) {
-  return texto.trim().toLocaleLowerCase("es-CO");
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("es-CO")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
 }
+
+const institucionesConDescuentoNormalizadas = new Set(institucionesConDescuento.map(normalizar));
 
 async function ensureHeaders(
   sheets: ReturnType<typeof google.sheets>,
@@ -215,7 +242,7 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
         estudiante.edad,
         `${estudiante.grado}°`,
         estudiante.procedencia,
-        institucionesConDescuento.has(normalizar(estudiante.procedencia)) ? "Sí" : "No",
+        institucionesConDescuentoNormalizadas.has(normalizar(estudiante.procedencia)) ? "Sí" : "No",
         "",
       ]),
     },
