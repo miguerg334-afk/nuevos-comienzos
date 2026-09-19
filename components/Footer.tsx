@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
                   Trabaja con nosotros
                 </Link>
               </li>
-              <li><Link href="/donativos" className="hover:text-[#f59e0b] transition-colors">DONATIVOS</Link></li>
+              <li><Link href="/donativos" className="hover:text-[#f59e0b] transition-colors">¿Cómo puedo apoyar?</Link></li>
             </ul>
           </div>
 
