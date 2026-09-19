@@ -13,8 +13,15 @@ export async function deliverSubmission(
   message: EmailContent,
   backup: (db: SupabaseClient, emailId: string) => Promise<void>,
   attachments: EmailAttachment[] = [],
+  afterEmailAccepted?: (emailId: string) => Promise<void>,
 ) {
   const id = await sendFormEmail(message, attachments);
+  try {
+    await afterEmailAccepted?.(id);
+  } catch {
+    // The applicant's email is accepted first, so an operational copy may fail safely.
+    console.error("Form email accepted; Google Sheets copy failed. Email ID:", id);
+  }
   try {
     const db = submissionClient();
     if (db) await backup(db, id);
