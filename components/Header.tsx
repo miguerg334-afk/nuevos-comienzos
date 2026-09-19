@@ -84,7 +84,15 @@ const Header = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={closeMenu}
+                scroll
+                onClick={() => {
+                  closeMenu();
+
+                  // Evita conservar la altura de la página o sección anterior
+                  // mientras Next.js termina la navegación. En los enlaces con
+                  // hash, el navegador posiciona después el destino indicado.
+                  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+                }}
                 className="relative whitespace-nowrap rounded-lg px-2.5 py-2 text-white/75 text-[12px] font-medium tracking-[0.2px] no-underline transition-colors duration-200 hover:bg-white/10 hover:text-white group"
               >
                 {item.label}
