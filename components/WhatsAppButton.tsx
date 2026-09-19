@@ -1,17 +1,12 @@
 "use client";
 
 import React from "react";
+import { WHATSAPP_URL } from "@/lib/site";
 
 export const WhatsAppButton: React.FC = () => {
-  // Reemplaza con tu número real (incluyendo el código de país, sin el signo +)
-  const phoneNumber = "573203242243";
-  const defaultMessage = encodeURIComponent(
-    "¡Hola! Me gustaría solicitar información sobre las prematrículas.",
-  );
-
   return (
     <a
-      href={`https://wa.me/${phoneNumber}?text=${defaultMessage}`}
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

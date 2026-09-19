@@ -1,7 +1,15 @@
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
 import DonacionForm from "@/components/DonacionForm";
 import DonacionesIntro from "@/components/DonacionesIntro";
 import { ArrowUpRight, Heart, HeartHandshake, Laptop, ReceiptText, Sprout } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "¿Cómo puedo apoyar?",
+  description: "Conoce las formas de apoyar a Nuevos Comienzos College y contribuir a nuevas oportunidades educativas en Campoalegre.",
+  alternates: { canonical: "/donativos" },
+  openGraph: { images: [{ url: "/img/img-donaciones.webp", width: 1200, height: 675, alt: "Apoya a Nuevos Comienzos College" }] },
+};
 
 const opciones = [
   { Icon: Laptop, titulo: "Equipa un sueño", descripcion: "Dona mobiliario y equipos.", detalle: "Un computador, un pupitre o un libro pueden abrir un mundo de posibilidades.", categoria: "Recursos que abren caminos", color: "bg-[#eef1f3]", iconColor: "bg-[#dce5eb] text-[#355267]" },

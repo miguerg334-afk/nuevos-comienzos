@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { WHATSAPP_URL } from "@/lib/site";
 
 export const Footer: React.FC = () => {
   return (
@@ -87,7 +88,7 @@ export const Footer: React.FC = () => {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/123456789"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

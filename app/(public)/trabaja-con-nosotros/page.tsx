@@ -1,6 +1,14 @@
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
 import TalentoForm from "@/components/TalentoForm";
 import { ArrowDown, BookOpen, BriefcaseBusiness, Check, GraduationCap, HeartHandshake, Lightbulb } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Trabaja con nosotros",
+  description: "Postúlate para formar parte de Nuevos Comienzos College. Convocatoria para docentes y profesionales en Campoalegre.",
+  alternates: { canonical: "/trabaja-con-nosotros" },
+  openGraph: { images: [{ url: "/img/hero.webp", width: 1897, height: 1037, alt: "Trabaja con Nuevos Comienzos College" }] },
+};
 
 const areas = ["Matemáticas", "Ciencias Naturales", "Lengua Castellana", "Inglés", "Ciencias Sociales", "Educación Física", "Tecnología e Informática", "Orientación escolar"];
 
