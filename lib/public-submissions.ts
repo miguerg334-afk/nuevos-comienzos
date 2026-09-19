@@ -18,9 +18,10 @@ export async function deliverSubmission(
   const id = await sendFormEmail(message, attachments);
   try {
     await afterEmailAccepted?.(id);
-  } catch {
+  } catch (error) {
     // The applicant's email is accepted first, so an operational copy may fail safely.
-    console.error("Form email accepted; Google Sheets copy failed. Email ID:", id);
+    const reason = error instanceof Error ? error.message : "Unknown Google Sheets error";
+    console.error("Form email accepted; Google Sheets copy failed.", { emailId: id, reason });
   }
   try {
     const db = submissionClient();
