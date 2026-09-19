@@ -30,6 +30,20 @@ const institucionesConDescuento = new Set([
   "institución educativa liceo genios huilenses",
 ]);
 
+// The same request color is applied in both tabs. Consecutive families never share a color.
+const requestIdColors = [
+  { red: 0.85, green: 0.92, blue: 1 },
+  { red: 0.82, green: 0.96, blue: 0.93 },
+  { red: 1, green: 0.93, blue: 0.76 },
+  { red: 1, green: 0.86, blue: 0.88 },
+  { red: 0.91, green: 0.86, blue: 1 },
+  { red: 0.84, green: 0.94, blue: 0.79 },
+  { red: 1, green: 0.88, blue: 0.78 },
+  { red: 0.84, green: 0.88, blue: 1 },
+  { red: 0.8, green: 0.95, blue: 0.98 },
+  { red: 0.96, green: 0.89, blue: 0.76 },
+];
+
 type ServiceAccount = { client_email: string; private_key: string };
 
 function sheetsConfiguration(): { spreadsheetId: string; credentials: ServiceAccount } | null {
@@ -110,6 +124,38 @@ async function formatInsertedRows(
   if (requests.length) await sheets.spreadsheets.batchUpdate({ spreadsheetId, requestBody: { requests } });
 }
 
+async function colorRequestIds(
+  sheets: ReturnType<typeof google.sheets>,
+  spreadsheetId: string,
+  colorIndex: number,
+  ranges: Array<{ sheetTitle: string; updatedRange: string | null | undefined }>,
+) {
+  const metadata = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties(sheetId,title)",
+  });
+  const sheetIds = new Map(metadata.data.sheets?.map(({ properties }) => [properties?.title, properties?.sheetId]));
+  const color = requestIdColors[colorIndex % requestIdColors.length];
+  const requests = ranges.flatMap(({ sheetTitle, updatedRange }) => {
+    const rows = insertedRows(updatedRange);
+    const sheetId = sheetIds.get(sheetTitle);
+    if (!rows || sheetId === undefined) return [];
+    return [{
+      repeatCell: {
+        range: { sheetId, ...rows, startColumnIndex: 0, endColumnIndex: 1 },
+        cell: {
+          userEnteredFormat: {
+            backgroundColor: color,
+            textFormat: { foregroundColor: { red: 0.04, green: 0.12, blue: 0.16 }, bold: true },
+          },
+        },
+        fields: "userEnteredFormat(backgroundColor,textFormat.foregroundColor,textFormat.bold)",
+      },
+    }];
+  });
+  if (requests.length) await sheets.spreadsheets.batchUpdate({ spreadsheetId, requestBody: { requests } });
+}
+
 /** Writes an operational copy after the applicant's email was accepted. */
 export async function appendPrematriculaToSheets(data: Prematricula, emailId: string) {
   const configuration = sheetsConfiguration();
@@ -179,4 +225,11 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
     { sheetTitle: "Solicitudes", updatedRange: solicitudAppend.data.updates?.updatedRange, columns: solicitudesHeaders.length },
     { sheetTitle: "Estudiantes", updatedRange: estudiantesAppend.data.updates?.updatedRange, columns: estudiantesHeaders.length },
   ]);
+  const solicitudRows = insertedRows(solicitudAppend.data.updates?.updatedRange);
+  if (solicitudRows) {
+    await colorRequestIds(sheets, configuration.spreadsheetId, solicitudRows.startRowIndex - 1, [
+      { sheetTitle: "Solicitudes", updatedRange: solicitudAppend.data.updates?.updatedRange },
+      { sheetTitle: "Estudiantes", updatedRange: estudiantesAppend.data.updates?.updatedRange },
+    ]);
+  }
 }
