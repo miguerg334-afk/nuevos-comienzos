@@ -18,8 +18,8 @@ const uniformes = [
     nombre: "Uniforme de educación física",
     uso: "Para actividad física y deportiva",
     descripcion:
-      "Pensado para moverse con comodidad. La camiseta combina azul petróleo, blanco y amarillo dorado; en la imagen se presenta con pantalón deportivo o pantaloneta.",
-    detalle: "Tela deportiva transpirable · Opciones de pantalón y pantaloneta",
+      "Pensado para moverse con comodidad. La camiseta combina azul petróleo, blanco y amarillo dorado; se complementa con pantalón deportivo y pantaloneta.",
+    detalle: "Tela deportiva transpirable · Pantalón deportivo y pantaloneta",
     Icono: Dumbbell,
     fondo: "bg-[#fff3d9]",
     acento: "text-[#a46c00]",
@@ -43,7 +43,7 @@ export default function Uniformes() {
               Nuestros <span className="italic text-[#a46c00]">uniformes</span>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-7 text-slate-600">
+          <p className="max-w-sm text-base leading-7 text-slate-600">
             Dos propuestas para cada momento de la vida escolar, con los colores y el escudo de Nuevos Comienzos College.
           </p>
         </div>
@@ -70,8 +70,8 @@ export default function Uniformes() {
               </div>
               <p className={`mb-3 text-xs font-semibold uppercase tracking-[0.12em] ${acento}`}>{uso}</p>
               <h3 className="font-serif text-3xl">{nombre}</h3>
-              <p className="mt-5 max-w-md text-sm leading-7 text-slate-700">{descripcion}</p>
-              <p className="mt-7 border-t border-[#0b2832]/10 pt-5 text-xs font-medium leading-6 text-slate-600">
+              <p className="mt-5 max-w-md text-base leading-7 text-slate-700">{descripcion}</p>
+              <p className="mt-7 border-t border-[#0b2832]/10 pt-5 text-base font-medium leading-6 text-slate-600">
                 {detalle}
               </p>
             </article>

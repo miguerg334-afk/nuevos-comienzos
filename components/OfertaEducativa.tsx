@@ -60,6 +60,11 @@ export default function OfertaEducativa() {
             Actualmente brindamos formación integral orientada a adolescentes en
             sus etapas clave de desarrollo intelectual y personal.
           </p>
+          <div className="mx-auto mt-7 inline-flex items-center gap-3 rounded-full border border-[#e5ad20]/40 bg-[#06141b]/55 px-5 py-3 text-left shadow-lg backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-[#e5ad20]" aria-hidden="true" />
+            <span className="text-sm font-semibold text-white">Jornada única</span>
+            <span className="text-sm text-white/75">7:00 a. m. – 1:30 p. m.</span>
+          </div>
         </div>
 
         {/* Tarjetas en Grid */}
@@ -83,7 +88,7 @@ export default function OfertaEducativa() {
               <h3 className="text-white font-bold text-lg lg:text-xl mb-2">
                 {grado.titulo}
               </h3>
-              <p className="text-white/75 text-xs lg:text-sm leading-relaxed">
+              <p className="text-white/75 text-base leading-relaxed">
                 {grado.descripcion}
               </p>
             </div>

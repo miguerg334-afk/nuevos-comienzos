@@ -16,9 +16,9 @@ export default function Home() {
       <EnfoqueEducativo />
       <Esencia />
       <Simbolos />
+      <Costos />
       <OfertaEducativa />
       <Uniformes />
-      <Costos />
       <InspirationBanner />
       <Footer />
 

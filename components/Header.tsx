@@ -10,7 +10,7 @@ const navigationItems = [
   { label: "Nosotros", href: "/#nosotros" },
   { label: "Símbolos", href: "/#simbolos" },
   { label: "Admisiones", href: "/#costos" },
-  { label: "Donativos", href: "/donativos" },
+  { label: "¿Cómo puedo apoyar?", href: "/donativos" },
   { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
 ];
 
