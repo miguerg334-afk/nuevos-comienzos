@@ -26,32 +26,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     const cleanEmail = email.trim().toLowerCase();
     const cleanPassword = password.trim();
 
-    // 1. MOCK / CREDENCIALES GENÉRICAS PARA PRUEBAS RÁPIDAS
-    if (cleanEmail === "admin@colegio.edu" && cleanPassword === "admin123") {
-      onClose();
-      router.push("/admin");
-      setIsLoading(false);
-      return;
-    }
-
-    if (cleanEmail === "profesor@colegio.edu" && cleanPassword === "profe123") {
-      onClose();
-      router.push("/profes");
-      setIsLoading(false);
-      return;
-    }
-
-    if (
-      cleanEmail === "estudiante@colegio.edu" &&
-      cleanPassword === "alumno123"
-    ) {
-      onClose();
-      router.push("/estudiantes");
-      setIsLoading(false);
-      return;
-    }
-
-    // 2. AUTENTICACIÓN CON SUPABASE (FALLBACK REAL)
     try {
       const { data: authData, error: authError } =
         await getSupabase().auth.signInWithPassword({
@@ -84,11 +58,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             router.push("/");
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error al iniciar sesión:", error);
-      setErrorMessage(
-        "Credenciales inválidas. Usa una de las cuentas de prueba mostradas abajo.",
-      );
+      setErrorMessage("No fue posible iniciar sesión. Verifica tus credenciales.");
     } finally {
       setIsLoading(false);
     }
@@ -115,34 +87,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <h2 className="text-2xl font-serif font-bold text-white">
             Iniciar Sesión
           </h2>
-          <p className="text-xs text-white/60 mt-1">
-            Acceso unificado para{" "}
-            <span className="text-white font-medium">Directivos</span>,{" "}
-            <span className="text-white font-medium">Docentes</span> y{" "}
-            <span className="text-white font-medium">Estudiantes</span>.
-          </p>
-        </div>
-
-        {/* Cuentas de prueba rápida */}
-        <div className="mb-5 p-3 bg-white/5 border border-amber-500/30 rounded-xl text-xs space-y-1">
-          <p className="text-[#e5ad20] font-bold uppercase tracking-wider text-[10px]">
-            Credenciales de prueba:
-          </p>
-          <div className="text-white/80 font-mono text-[11px] space-y-0.5">
-            <p>
-              • Admin: <span className="text-white">admin@colegio.edu</span> /{" "}
-              <span className="text-white">admin123</span>
-            </p>
-            <p>
-              • Profe: <span className="text-white">profesor@colegio.edu</span>{" "}
-              / <span className="text-white">profe123</span>
-            </p>
-            <p>
-              • Alumno:{" "}
-              <span className="text-white">estudiante@colegio.edu</span> /{" "}
-              <span className="text-white">alumno123</span>
-            </p>
-          </div>
         </div>
 
         {errorMessage && (
@@ -161,7 +105,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@colegio.edu"
+              placeholder="correo@institucion.edu"
               className="w-full px-4 py-3 bg-white/5 border border-white/12 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#e5ad20] focus:ring-1 focus:ring-[#e5ad20] transition-all"
             />
           </div>

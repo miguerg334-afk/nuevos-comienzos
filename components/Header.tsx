@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import LoginModal from "./LoginModal";
-import PreMatricula from "./PreMatricula";
 
 const navigationItems = [
   { label: "Inicio", href: "/" },
@@ -93,7 +92,6 @@ const Header = () => {
               </Link>
             ))}
 
-          <div className="xl:hidden"><PreMatricula compact /></div>
           {/* Opción de Ingresar en Menú Móvil */}
           <button
             onClick={openLogin}
@@ -126,8 +124,6 @@ const Header = () => {
             </svg>
             Ingresar
           </button>
-
-          <PreMatricula compact />
         </div>
       </header>
 
