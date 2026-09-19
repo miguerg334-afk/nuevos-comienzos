@@ -12,16 +12,14 @@ export default function Costos() {
     <section id="costos" className="relative scroll-mt-28 overflow-hidden bg-[#f6f3eb] px-6 py-24 text-[#06141b] md:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute -left-48 top-16 h-96 w-96 rounded-full border border-[#b77908]/10" />
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-12 overflow-hidden rounded-[24px] border border-[#e5ad20]/25 bg-[#0b242c] p-6 text-white shadow-[0_20px_50px_-34px_rgba(6,20,27,0.7)] sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8">
-          <div>
-            <p className="inline-flex rounded-full bg-[#e5ad20] px-3 py-1 text-sm font-bold text-[#06141b]">Admisiones abiertas</p>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-white/85">Cupos limitados. Asegura el tuyo. Da el primer paso hacia una educación que forma para la vida y prepara para el futuro.</p>
-          </div>
-          <div className="mt-5 shrink-0 sm:mt-0"><PreMatricula compact /></div>
-        </div>
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#b77908]/20 bg-[#e5ad20]/10 px-4 py-2 text-xs font-semibold text-[#805a13]"><GraduationCap size={16} aria-hidden="true" /> Admisiones · Nuevos Comienzos</span>
+            <div className="mb-8 overflow-hidden rounded-[24px] border border-[#e5ad20]/25 bg-[#0b242c] p-6 text-white shadow-[0_20px_50px_-34px_rgba(6,20,27,0.7)]">
+              <p className="inline-flex rounded-full bg-[#e5ad20] px-3 py-1 text-sm font-bold text-[#06141b]">Admisiones abiertas</p>
+              <p className="mt-4 text-base leading-7 text-white/85">Cupos limitados. Asegura el tuyo. Da el primer paso hacia una educación que forma para la vida y prepara para el futuro.</p>
+              <div className="mt-5"><PreMatricula compact /></div>
+            </div>
             <h2 className="font-serif text-4xl leading-[1.15] tracking-tight md:text-5xl">Un gran futuro<br /><span className="italic text-[#9b6c12]">comienza aquí.</span></h2>
             <p className="mt-6 max-w-md text-base leading-8 text-slate-600">Acompañamos a tu familia en el próximo paso. Conoce nuestros costos y beneficios y empieza a escribir una nueva historia con nosotros.</p>
             <div className="mt-8"><PreMatricula /></div>
