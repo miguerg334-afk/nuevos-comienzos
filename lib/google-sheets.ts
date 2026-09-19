@@ -94,6 +94,33 @@ function normalizar(texto: string) {
 
 const institucionesConDescuentoNormalizadas = new Set(institucionesConDescuento.map(normalizar));
 
+function levenshteinDistance(left: string, right: string) {
+  let previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let row = 1; row <= left.length; row += 1) {
+    const current = [row];
+    for (let column = 1; column <= right.length; column += 1) {
+      current[column] = Math.min(
+        current[column - 1] + 1,
+        previous[column] + 1,
+        previous[column - 1] + Number(left[row - 1] !== right[column - 1]),
+      );
+    }
+    previous = current;
+  }
+  return previous[right.length];
+}
+
+function descuentoPorInstitucion(procedencia: string): "Sí" | "Revisar" | "No" {
+  const nombre = normalizar(procedencia);
+  if (institucionesConDescuentoNormalizadas.has(nombre)) return "Sí";
+
+  const esProbable = [...institucionesConDescuentoNormalizadas].some((institucion) => {
+    const longestName = Math.max(nombre.length, institucion.length);
+    return longestName > 0 && 1 - levenshteinDistance(nombre, institucion) / longestName >= 0.88;
+  });
+  return esProbable ? "Revisar" : "No";
+}
+
 async function ensureHeaders(
   sheets: ReturnType<typeof google.sheets>,
   spreadsheetId: string,
@@ -242,7 +269,7 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
         estudiante.edad,
         `${estudiante.grado}°`,
         estudiante.procedencia,
-        institucionesConDescuentoNormalizadas.has(normalizar(estudiante.procedencia)) ? "Sí" : "No",
+        descuentoPorInstitucion(estudiante.procedencia),
         "",
       ]),
     },
