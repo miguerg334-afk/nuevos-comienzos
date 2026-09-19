@@ -69,6 +69,47 @@ async function ensureHeaders(
   });
 }
 
+function insertedRows(updatedRange: string | null | undefined) {
+  const rows = [...(updatedRange ?? "").matchAll(/\d+/g)].map(([value]) => Number(value));
+  if (rows.length < 2) return null;
+  return { startRowIndex: rows[0] - 1, endRowIndex: rows[rows.length - 1] };
+}
+
+async function formatInsertedRows(
+  sheets: ReturnType<typeof google.sheets>,
+  spreadsheetId: string,
+  ranges: Array<{ sheetTitle: string; updatedRange: string | null | undefined; columns: number }>,
+) {
+  const metadata = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties(sheetId,title)",
+  });
+  const sheetIds = new Map(metadata.data.sheets?.map(({ properties }) => [properties?.title, properties?.sheetId]));
+  const requests = ranges.flatMap(({ sheetTitle, updatedRange, columns }) => {
+    const rows = insertedRows(updatedRange);
+    const sheetId = sheetIds.get(sheetTitle);
+    if (!rows || sheetId === undefined) return [];
+    const range = { sheetId, ...rows, startColumnIndex: 0, endColumnIndex: columns };
+    const border = { style: "SOLID" as const, color: { red: 0.82, green: 0.85, blue: 0.84 } };
+    return [
+      {
+        repeatCell: {
+          range,
+          cell: {
+            userEnteredFormat: {
+              backgroundColor: { red: 1, green: 1, blue: 1 },
+              textFormat: { foregroundColor: { red: 0.04, green: 0.12, blue: 0.16 }, bold: false },
+            },
+          },
+          fields: "userEnteredFormat(backgroundColor,textFormat.foregroundColor,textFormat.bold)",
+        },
+      },
+      { updateBorders: { range, top: border, bottom: border, left: border, right: border, innerHorizontal: border, innerVertical: border } },
+    ];
+  });
+  if (requests.length) await sheets.spreadsheets.batchUpdate({ spreadsheetId, requestBody: { requests } });
+}
+
 /** Writes an operational copy after the applicant's email was accepted. */
 export async function appendPrematriculaToSheets(data: Prematricula, emailId: string) {
   const configuration = sheetsConfiguration();
@@ -95,7 +136,7 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
     timeZone: "America/Bogota",
   }).format(new Date());
 
-  await sheets.spreadsheets.values.append({
+  const solicitudAppend = await sheets.spreadsheets.values.append({
     spreadsheetId: configuration.spreadsheetId,
     range: "Solicitudes!A:I",
     valueInputOption: "USER_ENTERED",
@@ -115,7 +156,7 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
     },
   });
 
-  await sheets.spreadsheets.values.append({
+  const estudiantesAppend = await sheets.spreadsheets.values.append({
     spreadsheetId: configuration.spreadsheetId,
     range: "Estudiantes!A:H",
     valueInputOption: "USER_ENTERED",
@@ -133,4 +174,9 @@ export async function appendPrematriculaToSheets(data: Prematricula, emailId: st
       ]),
     },
   });
+
+  await formatInsertedRows(sheets, configuration.spreadsheetId, [
+    { sheetTitle: "Solicitudes", updatedRange: solicitudAppend.data.updates?.updatedRange, columns: solicitudesHeaders.length },
+    { sheetTitle: "Estudiantes", updatedRange: estudiantesAppend.data.updates?.updatedRange, columns: estudiantesHeaders.length },
+  ]);
 }
