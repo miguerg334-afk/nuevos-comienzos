@@ -44,7 +44,7 @@ export default function EnfoqueEducativo() {
   return (
     <section
       id="enfoque-educativo"
-      className="relative w-full overflow-hidden bg-[#e8d6a8] px-5 py-20 md:py-28 scroll-mt-28"
+      className="relative w-full overflow-hidden bg-white px-5 py-20 md:py-28 scroll-mt-28"
       aria-labelledby="enfoque-educativo-titulo"
     >
       {/* ═══════════════ CAPAS DE FONDO ═══════════════ */}
@@ -52,20 +52,20 @@ export default function EnfoqueEducativo() {
       {/* 1. Trama diagonal tipo papel */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.75]"
+        className="pointer-events-none absolute inset-0 opacity-[0.9]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(135deg, rgba(6,20,27,0.05) 0px, rgba(6,20,27,0.05) 1px, transparent 1px, transparent 14px)",
+            "repeating-linear-gradient(135deg, rgba(6,20,27,0.06) 0px, rgba(6,20,27,0.06) 1px, transparent 1px, transparent 14px)",
         }}
       />
 
       {/* 2. Grid arquitectónico tipo blueprint */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.72]"
+        className="pointer-events-none absolute inset-0 opacity-[0.9]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(6,20,27,0.075) 1px, transparent 1px), linear-gradient(90deg, rgba(6,20,27,0.075) 1px, transparent 1px)",
+            "linear-gradient(rgba(6,20,27,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(6,20,27,0.09) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage:
             "radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%)",
@@ -74,49 +74,23 @@ export default function EnfoqueEducativo() {
         }}
       />
 
-      {/* 3. Blobs orgánicos difuminados */}
+      {/* 3. Haz diagonal decorativo */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-0 h-[520px] w-[520px] rounded-full blur-[120px]"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,202,61,0.58) 0%, rgba(229,173,32,0) 70%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-1/3 h-[560px] w-[560px] rounded-full blur-[130px]"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(6,20,27,0.28) 0%, rgba(6,20,27,0) 70%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-180px] left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full blur-[140px]"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(166,120,8,0.45) 0%, rgba(166,120,8,0) 70%)",
+            "linear-gradient(115deg, transparent 27%, rgba(229,173,32,0.05) 43%, rgba(229,173,32,0.14) 50%, rgba(229,173,32,0.05) 57%, transparent 73%)",
         }}
       />
 
-      {/* 4. Haz diagonal dorado tipo rayo de luz */}
+      {/* 4. Puntos decorativos (dot grid) - esquina superior derecha */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-90"
-        style={{
-          background:
-            "linear-gradient(115deg, transparent 27%, rgba(255,238,181,0.26) 43%, rgba(229,173,32,0.30) 50%, rgba(255,238,181,0.26) 57%, transparent 73%)",
-        }}
-      />
-
-      {/* 5. Puntos decorativos (dot grid) - esquina superior derecha */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-8 top-10 hidden h-40 w-40 md:block"
+        className="pointer-events-none absolute right-8 top-8 hidden h-56 w-56 md:block"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(166,120,8,0.45) 1.2px, transparent 1.2px)",
+            "radial-gradient(rgba(166,120,8,0.62) 1.3px, transparent 1.3px)",
           backgroundSize: "14px 14px",
           maskImage:
             "radial-gradient(circle at top right, black 30%, transparent 75%)",
@@ -125,13 +99,13 @@ export default function EnfoqueEducativo() {
         }}
       />
 
-      {/* 6. Puntos decorativos - esquina inferior izquierda */}
+      {/* 5. Puntos decorativos - esquina inferior izquierda */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-10 left-8 hidden h-40 w-40 md:block"
+        className="pointer-events-none absolute bottom-8 left-8 hidden h-56 w-56 md:block"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(6,20,27,0.35) 1.2px, transparent 1.2px)",
+            "radial-gradient(rgba(6,20,27,0.52) 1.3px, transparent 1.3px)",
           backgroundSize: "14px 14px",
           maskImage:
             "radial-gradient(circle at bottom left, black 30%, transparent 75%)",
@@ -140,32 +114,34 @@ export default function EnfoqueEducativo() {
         }}
       />
 
-      {/* 7. Vignette suave para enfocar el centro */}
+      {/* 6. Vignette suave para enfocar el centro */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 100% 80% at 50% 50%, transparent 48%, rgba(6,20,27,0.14) 100%)",
+            "radial-gradient(ellipse 100% 80% at 50% 50%, transparent 48%, rgba(6,20,27,0.08) 100%)",
         }}
       />
 
-      {/* 8. Línea vertical editorial izquierda */}
+      {/* 7. Línea vertical editorial izquierda */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-6 top-20 bottom-20 hidden w-px bg-gradient-to-b from-transparent via-[#e5ad20]/40 to-transparent lg:block"
       />
 
-      {/* 9. Marca de agua tipográfica */}
+      {/* 8. Marca de agua tipográfica */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-6 top-10 hidden select-none font-serif text-[200px] leading-none text-[#06141b]/[0.035] md:block"
+        className="pointer-events-none absolute -right-6 top-10 hidden select-none font-serif text-[200px] leading-none text-[#06141b]/[0.065] md:block"
       >
         NC
       </span>
 
-      <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-[28%] h-[520px] w-[520px] rotate-12 rounded-[120px] border border-[#06141b]/20 bg-[#06141b]/[0.07] shadow-[0_32px_80px_rgba(6,20,27,0.12)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 left-[8%] h-44 w-44 rounded-full border-[22px] border-[#f4c34e]/60" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-[28%] h-[520px] w-[520px] rotate-12 rounded-[120px] border-2 border-[#06141b]/25 bg-[#06141b]/[0.025] shadow-[0_32px_80px_rgba(6,20,27,0.08)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 left-[8%] h-44 w-44 rounded-full border-[22px] border-[#e5ad20]/65" />
+      <div aria-hidden="true" className="pointer-events-none absolute left-[42%] top-[24%] hidden h-28 w-28 rotate-45 border border-[#06141b]/30 lg:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute right-[26%] bottom-14 hidden h-24 w-24 rounded-full border-[10px] border-[#e5ad20]/35 lg:block" />
 
       {/* ═══════════════ CONTENIDO ═══════════════ */}
 
@@ -198,7 +174,7 @@ export default function EnfoqueEducativo() {
           {pilares.map((pilar) => (
             <article
               key={pilar.numero}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-[#fffdf8]/90 p-7 shadow-[0_18px_45px_-28px_rgba(6,20,27,0.42),0_1px_0_0_rgba(255,255,255,0.8)_inset] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#e5ad20]/80 hover:bg-white hover:shadow-[0_30px_55px_-20px_rgba(6,20,27,0.38)] md:p-8"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#e5ad20]/45 bg-[#f5df9d]/38 p-7 shadow-[0_22px_48px_-26px_rgba(110,76,8,0.3),0_1px_0_0_rgba(255,255,255,0.95)_inset] backdrop-blur-2xl transition-all duration-300 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-20 before:bg-gradient-to-b before:from-white/72 before:to-transparent hover:-translate-y-1 hover:border-[#a67808]/70 hover:bg-[#f8e9bd]/55 hover:shadow-[0_30px_55px_-20px_rgba(110,76,8,0.38)] md:p-8"
             >
               {/* Línea dorada superior animada */}
               <span
