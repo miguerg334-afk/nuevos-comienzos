@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Dumbbell, Shirt } from "lucide-react";
+import UniformesScrollExpand from "./UniformesScrollExpand";
 
 const uniformes = [
   {
@@ -48,16 +48,7 @@ export default function Uniformes() {
           </p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-[28px] border border-[#d9e1dc] bg-white p-2 shadow-[0_24px_60px_-40px_rgba(6,30,39,0.35)] sm:p-4">
-          <Image
-            src="/img/uniformes-con-escudo.png"
-            alt="Propuesta de uniforme de diario con polo blanco y pantalón azul petróleo; uniforme deportivo azul petróleo, blanco y amarillo con pantalón o pantaloneta"
-            width={1607}
-            height={979}
-            sizes="(max-width: 768px) 100vw, 1152px"
-            className="h-auto w-full rounded-[20px]"
-          />
-        </div>
+        <UniformesScrollExpand />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {uniformes.map(({ numero, nombre, uso, descripcion, detalle, Icono, fondo, acento }) => (
