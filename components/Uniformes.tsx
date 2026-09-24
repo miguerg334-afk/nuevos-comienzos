@@ -50,7 +50,7 @@ export default function Uniformes() {
 
         <div className="mt-10 overflow-hidden rounded-[28px] border border-[#d9e1dc] bg-white p-2 shadow-[0_24px_60px_-40px_rgba(6,30,39,0.35)] sm:p-4">
           <Image
-            src="/img/uniformes-con-escudo.png"
+            src="/img/uniformes-mejorados.png"
             alt="Propuesta de uniforme de diario con polo blanco y pantalón azul petróleo; uniforme deportivo azul petróleo, blanco y amarillo con pantalón o pantaloneta"
             width={1607}
             height={979}

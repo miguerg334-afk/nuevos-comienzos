@@ -92,7 +92,7 @@ export default function Donativos() {
             <article className="rounded-[28px] bg-[#f4efdf] p-8 sm:p-10">
               <div className="mb-8 flex items-start justify-between"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/80 text-[#8a6b20]"><ReceiptText size={27} strokeWidth={1.5} aria-hidden="true" /></span><span className="font-serif text-5xl text-[#8a6b20]/20" aria-hidden="true">02</span></div>
               <h3 className="max-w-sm font-serif text-3xl leading-tight">Tu donación también puede generar beneficios tributarios.</h3>
-              <p className="mt-5 max-w-md text-sm leading-7 text-slate-700">Las donaciones a la Fundación Nuevos Comienzos pueden dar lugar a beneficios en el impuesto sobre la renta, siempre que la Fundación y la donación cumplan los requisitos de la legislación colombiana. Consulta con la Fundación la certificación correspondiente.</p>
+              <p className="mt-5 max-w-md text-sm leading-7 text-slate-700">Cuando donas a la Fundación Nuevos Comienzos, cumples los requisitos establecidos por la legislación colombiana para obtener beneficios tributarios en el impuesto sobre la renta.</p>
               <a href="https://www.dian.gov.co/impuestos/sociedades/Regimen-Tributario-Especial-RTE/Preguntas_Frecuentes/Paginas/default.aspx" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-xs font-semibold text-[#765918] underline underline-offset-4 hover:text-[#4d3810]">Conoce los requisitos de la DIAN <ArrowUpRight size={15} aria-hidden="true" /></a>
             </article>
           </div>
