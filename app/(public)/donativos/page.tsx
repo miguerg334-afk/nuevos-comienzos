@@ -47,16 +47,16 @@ export default function Donativos() {
           </div>
 
           <div className="relative mt-8 grid gap-6 lg:grid-cols-2">
-            <article className="group relative flex min-h-[330px] transform-gpu flex-col overflow-hidden rounded-[26px] border border-white/20 bg-[linear-gradient(135deg,#fffdf7_0%,#f3ead5_100%)] p-6 text-[#09252e] shadow-[0_24px_50px_-24px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:scale-[1.01] hover:border-[#e5ad20]/60 hover:shadow-[0_32px_60px_-22px_rgba(0,0,0,0.55)] sm:aspect-[1.48/1] sm:min-h-0 sm:p-8">
+            <article className="group relative flex min-h-[360px] transform-gpu flex-col overflow-hidden rounded-[26px] border border-white/20 bg-[linear-gradient(135deg,#fffdf7_0%,#f3ead5_100%)] p-5 text-[#09252e] shadow-[0_24px_50px_-24px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:scale-[1.01] hover:border-[#e5ad20]/60 hover:shadow-[0_32px_60px_-22px_rgba(0,0,0,0.55)] min-[390px]:p-6 sm:aspect-[1.48/1] sm:min-h-0 sm:p-8">
               <div aria-hidden="true" className="absolute -right-20 -top-24 h-64 w-64 rounded-full border-[42px] border-[#dca614]/[0.07] transition-transform duration-500 group-hover:scale-105" />
               <div aria-hidden="true" className="absolute bottom-0 left-0 h-24 w-full bg-[linear-gradient(90deg,rgba(220,166,20,0.06),transparent)]" />
 
-              <div className="relative flex items-start justify-between gap-4">
+              <div className="relative flex flex-col items-start gap-2 min-[440px]:flex-row min-[440px]:justify-between min-[440px]:gap-4">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9b6c12]">Transferencia nacional</p>
                   <h3 className="mt-1 font-semibold">Desde Colombia</h3>
                 </div>
-                <p className="font-serif text-lg font-semibold tracking-wide">Bancolombia</p>
+                <p className="font-serif text-base font-semibold tracking-wide min-[440px]:text-lg">Bancolombia</p>
               </div>
 
               <div className="relative mt-5 flex items-center gap-4">
@@ -68,25 +68,25 @@ export default function Donativos() {
 
               <div className="relative mt-5">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-500">Número de cuenta</p>
-                <p className="mt-1 font-serif text-[clamp(1.65rem,3vw,2.15rem)] tracking-[0.08em] text-[#8b6110]">459-000016-72</p>
+                <p className="mt-1 whitespace-nowrap font-serif text-[clamp(1.35rem,7.5vw,2.15rem)] tracking-[0.035em] text-[#8b6110] min-[390px]:tracking-[0.06em] sm:tracking-[0.08em]">459-000016-72</p>
               </div>
 
-              <dl className="relative mt-auto grid grid-cols-[1fr_auto] items-end gap-5 pt-5">
-                <div><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Titular</dt><dd className="mt-1 max-w-[26ch] text-sm font-semibold leading-5">Fundación Social Nuevos Comienzos</dd><dd className="mt-0.5 text-[11px] text-slate-500">NIT: 902091463</dd></div>
+              <dl className="relative mt-auto grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-end gap-3 pt-5 min-[390px]:gap-5">
+                <div className="min-w-0"><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Titular</dt><dd className="mt-1 max-w-[26ch] text-sm font-semibold leading-5">Fundación Social Nuevos Comienzos</dd><dd className="mt-0.5 text-[11px] text-slate-500">NIT: 902091463</dd></div>
                 <div className="text-right"><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Tipo</dt><dd className="mt-1 text-sm font-medium">Ahorros</dd></div>
               </dl>
             </article>
 
-            <article className="group relative flex min-h-[350px] transform-gpu flex-col overflow-hidden rounded-[26px] border border-[#7f9ec4]/35 bg-[linear-gradient(135deg,#284b70_0%,#152d50_55%,#0e2341_100%)] p-6 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.65)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:scale-[1.01] hover:border-[#e5ad20]/55 hover:shadow-[0_32px_65px_-22px_rgba(4,13,30,0.9)] sm:aspect-[1.48/1] sm:min-h-0 sm:p-8">
+            <article className="group relative flex min-h-[410px] transform-gpu flex-col overflow-hidden rounded-[26px] border border-[#7f9ec4]/35 bg-[linear-gradient(135deg,#284b70_0%,#152d50_55%,#0e2341_100%)] p-5 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.65)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:scale-[1.01] hover:border-[#e5ad20]/55 hover:shadow-[0_32px_65px_-22px_rgba(4,13,30,0.9)] min-[390px]:p-6 sm:aspect-[1.48/1] sm:min-h-0 sm:p-8">
               <div aria-hidden="true" className="absolute -right-16 -top-20 h-60 w-60 rounded-full border-[40px] border-[#e5ad20]/[0.06] transition-transform duration-500 group-hover:scale-105" />
               <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.04)_50%,transparent_70%)]" />
 
-              <div className="relative flex items-start justify-between gap-4">
+              <div className="relative flex flex-col items-start gap-2 min-[440px]:flex-row min-[440px]:justify-between min-[440px]:gap-4">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e5ad20]">Transferencia internacional</p>
                   <h3 className="mt-1 font-semibold">Fuera de Colombia</h3>
                 </div>
-                <div className="flex items-center gap-2 text-white/80"><Globe2 size={18} strokeWidth={1.5} aria-hidden="true" /><span className="font-serif text-lg">Bancolombia S.A.</span></div>
+                <div className="flex items-center gap-2 text-white/80"><Globe2 className="shrink-0" size={17} strokeWidth={1.5} aria-hidden="true" /><span className="font-serif text-base min-[440px]:text-lg">Bancolombia S.A.</span></div>
               </div>
 
               <div className="relative mt-5 flex items-center gap-4">
@@ -98,11 +98,11 @@ export default function Donativos() {
 
               <div className="relative mt-5">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">Cuenta de ahorros</p>
-                <p className="mt-1 font-serif text-[clamp(1.65rem,3vw,2.15rem)] tracking-[0.08em] text-[#e5ad20]">459-000016-72</p>
+                <p className="mt-1 whitespace-nowrap font-serif text-[clamp(1.35rem,7.5vw,2.15rem)] tracking-[0.035em] text-[#e5ad20] min-[390px]:tracking-[0.06em] sm:tracking-[0.08em]">459-000016-72</p>
               </div>
 
-              <dl className="relative mt-auto grid grid-cols-[1fr_auto_auto] items-end gap-4 pt-5">
-                <div><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white/40">Beneficiario</dt><dd className="mt-1 max-w-[24ch] text-sm font-semibold leading-5 text-white/90">Fundación Social Nuevos Comienzos</dd></div>
+              <dl className="relative mt-auto grid min-w-0 grid-cols-2 items-end gap-x-4 gap-y-4 pt-5 sm:grid-cols-[1fr_auto_auto]">
+                <div className="col-span-2 min-w-0 sm:col-span-1"><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white/40">Beneficiario</dt><dd className="mt-1 max-w-[24ch] text-sm font-semibold leading-5 text-white/90">Fundación Social Nuevos Comienzos</dd></div>
                 <div><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white/40">SWIFT</dt><dd className="mt-1 font-serif text-base tracking-wider text-[#e5ad20]">COLOCOBM</dd></div>
                 <div className="text-right"><dt className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white/40">País</dt><dd className="mt-1 text-sm font-medium text-white/90">Colombia</dd></div>
               </dl>
