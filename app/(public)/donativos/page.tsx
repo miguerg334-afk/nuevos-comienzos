@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 import DonacionForm from "@/components/DonacionForm";
 import DonacionesIntro from "@/components/DonacionesIntro";
-import { ArrowUpRight, Heart, HeartHandshake, Laptop, ReceiptText, Sprout } from "lucide-react";
+import { ArrowUpRight, Building2, Globe2, Heart, HeartHandshake, Laptop, Landmark, ReceiptText, Sprout } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "¿Cómo puedo apoyar?",
@@ -24,6 +24,60 @@ export default function Donativos() {
       <section id="formas-de-aportar" className="mx-auto max-w-6xl scroll-mt-28 px-6 py-20 md:py-28">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">Tres formas de dejar huella</p><h2 className="font-serif text-4xl leading-tight md:text-5xl">Cada aporte tiene<br /><span className="italic text-[#9b6c12]">una historia por delante.</span></h2></div><p className="max-w-xs text-sm leading-7 text-slate-600">Elige la forma de sumarte que más conecta contigo. Tú puedes ser parte de ese comienzo.</p></div>
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-7">{opciones.map(({ Icon, titulo, descripcion, detalle, categoria, color, iconColor }, index) => <article key={titulo} className={`group relative flex flex-col overflow-hidden rounded-[28px] border border-[#06141b]/5 p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-[#06141b]/5 sm:p-10 lg:p-8 ${color}`}><div className="mb-8 flex items-center justify-between"><span className={`grid h-14 w-14 place-items-center rounded-2xl ${iconColor}`}><Icon size={26} strokeWidth={1.5} aria-hidden="true" /></span><span className="font-serif text-5xl text-[#06141b]/15" aria-hidden="true">0{index + 1}</span></div><p className="mb-3 text-xs font-medium tracking-wide text-slate-500">{categoria}</p><h3 className="font-serif text-3xl leading-tight">{titulo}</h3><p className="mt-4 font-medium leading-7">{descripcion}</p><p className="mt-2 max-w-sm text-sm leading-7 text-slate-600">{detalle}</p><div className="mt-auto pt-8"><DonacionForm modalidad={titulo} /></div></article>)}</div>
+        <section aria-labelledby="datos-bancarios" className="mt-20 overflow-hidden rounded-[32px] bg-[#0b242c] text-white md:mt-28">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="flex flex-col justify-between border-b border-white/10 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+              <div>
+                <span className="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-[#e5ad20] text-[#0b242c]">
+                  <Landmark size={27} strokeWidth={1.5} aria-hidden="true" />
+                </span>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[#e5ad20]">Datos para realizar tu aporte</p>
+                <h2 id="datos-bancarios" className="max-w-md font-serif text-4xl leading-tight sm:text-5xl">
+                  Tu apoyo puede empezar <span className="italic text-[#e5ad20]">desde cualquier lugar.</span>
+                </h2>
+              </div>
+              <p className="mt-8 max-w-md text-sm leading-7 text-white/65">Realiza tu transferencia directamente a la cuenta oficial de la Fundación.</p>
+            </div>
+
+            <div className="grid gap-px bg-white/10 sm:grid-cols-2">
+              <article className="bg-[#0b242c] p-8 sm:p-10">
+                <div className="mb-8 flex items-center gap-3 text-[#e5ad20]">
+                  <Building2 size={22} strokeWidth={1.5} aria-hidden="true" />
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.14em]">Desde Colombia</h3>
+                </div>
+                <p className="font-serif text-2xl leading-snug">Fundación Social Nuevos Comienzos</p>
+                <p className="mt-2 text-sm text-white/60">NIT: 902091463</p>
+                <dl className="mt-8 space-y-5 border-t border-white/10 pt-7">
+                  <div><dt className="text-xs uppercase tracking-wider text-white/45">Banco</dt><dd className="mt-1 font-medium">Bancolombia</dd></div>
+                  <div><dt className="text-xs uppercase tracking-wider text-white/45">Tipo de cuenta</dt><dd className="mt-1 font-medium">Cuenta de ahorros</dd></div>
+                  <div><dt className="text-xs uppercase tracking-wider text-white/45">Número de cuenta</dt><dd className="mt-1 font-serif text-2xl tracking-wide text-[#e5ad20]">459-000016-72</dd></div>
+                </dl>
+              </article>
+
+              <article className="bg-[#102d36] p-8 sm:p-10">
+                <div className="mb-8 flex items-center gap-3 text-[#e5ad20]">
+                  <Globe2 size={22} strokeWidth={1.5} aria-hidden="true" />
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.14em]">Fuera de Colombia</h3>
+                </div>
+                <dl className="space-y-5">
+                  {[
+                    ["Beneficiario", "Fundación Social Nuevos Comienzos"],
+                    ["Banco", "Bancolombia S.A."],
+                    ["Cuenta", "459-000016-72"],
+                    ["Tipo", "Cuenta de ahorros"],
+                    ["SWIFT", "COLOCOBM"],
+                    ["País", "Colombia"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="flex flex-col gap-1 border-b border-white/10 pb-4 last:border-0 last:pb-0">
+                      <dt className="text-xs uppercase tracking-wider text-white/45">{label}</dt>
+                      <dd className={`font-medium ${label === "Cuenta" || label === "SWIFT" ? "tracking-wide text-[#e5ad20]" : ""}`}>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            </div>
+          </div>
+        </section>
         <section aria-labelledby="por-que-donar" className="mt-20 md:mt-28">
           <div className="mb-10 max-w-2xl">
             <p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">El sentido de tu aporte</p>
