@@ -21,36 +21,36 @@ export default function Donativos() {
   return (
     <main className="min-h-screen bg-[#fbf9f4] text-[#06141b]">
       <DonacionesIntro />
-      <section aria-labelledby="video-donaciones" className="mx-auto max-w-6xl px-6 pt-20 md:pt-28">
-        <div className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.55fr)]">
-          <div>
-            <p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">Conoce el impacto</p>
-            <h2 id="video-donaciones" className="max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
-              Mira lo que juntos podemos <span className="italic text-[#9b6c12]">hacer posible.</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-7 text-slate-600 md:justify-self-end">
-            Antes de elegir cómo aportar, conoce las historias y el propósito que dan vida a Nuevos Comienzos.
-          </p>
-        </div>
-
-        <div className="mt-10 overflow-hidden rounded-[28px] border border-[#06141b]/10 bg-[#061c24] shadow-[0_28px_70px_-38px_rgba(6,30,39,0.55)]">
-          <div className="aspect-video">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/k8A-eXQc70Q?rel=0"
-              title="Conoce el impacto de Nuevos Comienzos College"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </section>
       <section id="formas-de-aportar" className="mx-auto max-w-6xl scroll-mt-28 px-6 py-20 md:py-28">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">Tres formas de dejar huella</p><h2 className="font-serif text-4xl leading-tight md:text-5xl">Cada aporte tiene<br /><span className="italic text-[#9b6c12]">una historia por delante.</span></h2></div><p className="max-w-xs text-sm leading-7 text-slate-600">Elige la forma de sumarte que más conecta contigo. Tú puedes ser parte de ese comienzo.</p></div>
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-7">{opciones.map(({ Icon, titulo, descripcion, detalle, categoria, color, iconColor }, index) => <article key={titulo} className={`group relative flex flex-col overflow-hidden rounded-[28px] border border-[#06141b]/5 p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-[#06141b]/5 sm:p-10 lg:p-8 ${color}`}><div className="mb-8 flex items-center justify-between"><span className={`grid h-14 w-14 place-items-center rounded-2xl ${iconColor}`}><Icon size={26} strokeWidth={1.5} aria-hidden="true" /></span><span className="font-serif text-5xl text-[#06141b]/15" aria-hidden="true">0{index + 1}</span></div><p className="mb-3 text-xs font-medium tracking-wide text-slate-500">{categoria}</p><h3 className="font-serif text-3xl leading-tight">{titulo}</h3><p className="mt-4 font-medium leading-7">{descripcion}</p><p className="mt-2 max-w-sm text-sm leading-7 text-slate-600">{detalle}</p><div className="mt-auto pt-8"><DonacionForm modalidad={titulo} /></div></article>)}</div>
+        <section aria-labelledby="video-donaciones" className="mt-20 md:mt-28">
+          <div className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.55fr)]">
+            <div>
+              <p className="mb-4 text-xs font-semibold tracking-wider text-[#a37017]">Conoce el impacto</p>
+              <h2 id="video-donaciones" className="max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
+                Mira lo que juntos podemos <span className="italic text-[#9b6c12]">hacer posible.</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-slate-600 md:justify-self-end">
+              Conoce las historias y el propósito que dan vida a Nuevos Comienzos.
+            </p>
+          </div>
+
+          <div className="mt-10 overflow-hidden rounded-[28px] border border-[#06141b]/10 bg-[#061c24] shadow-[0_28px_70px_-38px_rgba(6,30,39,0.55)]">
+            <div className="aspect-video">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/k8A-eXQc70Q?rel=0"
+                title="Conoce el impacto de Nuevos Comienzos College"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
         <section aria-labelledby="datos-bancarios" className="relative mt-20 overflow-hidden rounded-[32px] bg-[#09252e] p-6 text-white shadow-[0_28px_70px_-38px_rgba(6,30,39,0.65)] sm:p-9 md:mt-28 lg:p-12">
           <div aria-hidden="true" className="absolute -right-28 -top-32 h-96 w-96 rounded-full border border-white/[0.06]" />
           <div aria-hidden="true" className="absolute -right-10 -top-16 h-64 w-64 rounded-full border border-[#e5ad20]/10" />
